@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  hk-mysql:
+    container_name: hk-mysql
+    environment:
+      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: hellokoding
+      MYSQL_ROOT_HOST: '%'
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    ports:
+      - "3306:3306"
+    restart: always
+    networks:
+      - network
+
+networks:
+  network:
+    external:
+      name: my-net
+

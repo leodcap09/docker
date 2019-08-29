@@ -15,6 +15,7 @@ services:
       - network
   
   app:
+    container_name: hk-app
     restart: always
     build: ./app
     working_dir: /app
