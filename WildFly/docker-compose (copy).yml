@@ -1,0 +1,31 @@
+version: '3.5'
+services:
+
+  wildfly1:
+    build:
+      context: .
+      args:
+        WILDFLY_NAME: wildfly_1_test
+        CLUSTER_PW: secret_password
+    image: wildfly_1_test
+    ports:
+    - 8080:8080
+    networks:
+    - network
+
+  wildfly2:
+    build: 
+      context: .
+      args:
+        WILDFLY_NAME: wildfly_2_test
+        CLUSTER_PW: secret_password
+    image: wildfly_2_test
+    ports:
+    - 8081:8080
+    networks:
+    - network
+
+networks:
+  network:
+    external:
+      name: my-net
